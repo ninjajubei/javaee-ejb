@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Curso</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1> Formulario de Curso </h1>
+
+            <h:inputHidden id="id" value="#{cursoMultiBean.curso.id}"/>
+
+            Curso: <p:inputText id="nombre"
+                                   value="#{cursoMultiBean.curso.nombre}" /><br />
+
+            Fecha Inicio: <p:inputText id="fechainicio"
+                                      value="#{cursoMultiBean.curso.fechaInicio}" />
+            
+            Programa <p:selectOneMenu id="programa" 
+                                      value="#{cursoMultiBean.curso.programa.nombre}"/>
+
+            <br /><br />
+
+            <p:commandButton value="Registrar"
+                             action="#{cursoMultiBean.save}" update="@form"/>
+
+
+        </h:form>
+
+    </h:body>
+</html>

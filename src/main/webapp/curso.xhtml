@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cursos</title>
+    </h:head>
+    <h:body>
+        <h1>Cursos</h1>
+        <h:form>
+            <p:dataTable var="cur" value="#{cursoBean.cursos}">
+                
+                <p:column headerText="Id" width="10%">
+                    <h:outputText value="#{cur.id}" />
+                </p:column>
+
+                <p:column headerText="Nombre"  width="30%">
+                    <h:outputText value="#{cur.nombre}" />
+                </p:column>
+
+                <p:column headerText="Fecha Inicio"  width="40%">
+                    <h:outputText value="#{cur.fechaInicio}" />
+                </p:column>
+                
+                <p:column headerText="Programa"  width="40%">
+                    <h:outputText value="#{cur.programa.nombre}" />
+                </p:column>
+
+                <p:column headerText="Acciones"  width="30%">
+                    <p:commandButton value="Editar"
+                                     actionListener="#{cursoBean.update(cur)}"
+                                     update="@form"/>
+
+                    <p:commandButton value="Eliminar"
+                                     actionListener="#{cursoBean.delete(cur)}"
+                                     update="@form" />
+                </p:column>
+                
+            </p:dataTable>
+            
+            <h1> Formulario </h1>
+
+            <h:inputHidden id="id" value="#{cursoBean.curso.id}"/>
+
+            Curso: <p:inputText id="nombre"
+                                   value="#{cursoBean.curso.nombre}" /><br />
+
+            Fecha de Inicio: <p:inputText id="fechainicio"
+                                          value="#{cursoBean.curso.fechaInicio}" />
+            
+            Programa <p:selectOneMenu id="programa" 
+                                      value="#{cursoBean.curso.programa.id}"/>
+            
+            <br /><br />
+            
+            <p:commandButton value="Registrar"
+                             actionListener="#{cursoBean.save}" update="@form"/>
+            
+            
+            
+        </h:form>
+    </h:body>
+</html>
